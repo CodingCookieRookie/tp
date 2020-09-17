@@ -20,8 +20,6 @@ Fortunately, IntelliJ IDEA provides a robust refactoring tool that can identify 
 
 ### Assisted refactoring
 
-The `address` field in `Person` is actually an instance of the `seedu.address.model.person.Address` class. Since removing the `Address` class will break the application, we start by identifying `Address`'s usages. This allows us to see code that depends on `Address` to function properly and edit them on a case-by-case basis. Right-click the `Address` class and select `Refactor` \> `Safe Delete` through the menu.
-
 ![Usages detected](../images/remove/UnsafeDelete.png)
 
 Choose to `View Usages` and you should be presented with a list of `Safe Delete Conflicts`. These conflicts describe locations in which the `Address` class is used.
