@@ -10,6 +10,10 @@ public class Remark {
     public static final String MESSAGE_CONSTRAINTS = "Remark should be alphanumeric";
     public final String value;
 
+    /**
+     * Creates a remark.
+     * @param remark
+     */
     public Remark(String remark) {
         requireNonNull(remark);
         value = remark;

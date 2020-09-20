@@ -36,6 +36,13 @@ public class RemarkCommand extends Command {
         this.index = index;
         this.remark = remark;
     }
+
+    /**
+     * Returns a commandResult based on model.
+     * @param model {@code Model} which the command should operate on.
+     * @return A commandResult based on model.
+     * @throws CommandException
+     */
     public CommandResult execute(Model model) throws CommandException {
         List<Person> lastShownList = model.getFilteredPersonList();
 
