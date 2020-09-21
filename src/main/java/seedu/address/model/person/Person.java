@@ -19,10 +19,10 @@ public class Person {
     private final Name name;
     private final Phone phone;
     private final Email email;
+    private final Remark remark;
 
     // Data fields
     private final Address address;
-    private final Remark remark;
     private final Set<Tag> tags = new HashSet<>();
 
     /**
@@ -54,6 +54,10 @@ public class Person {
         return address;
     }
 
+    public Remark getRemark() {
+        return remark;
+    }
+
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
@@ -76,11 +80,6 @@ public class Person {
                 && (otherPerson.getPhone().equals(getPhone()) || otherPerson.getEmail().equals(getEmail()));
     }
 
-    public Remark getRemark() {
-        return remark;
-    }
-
-
     /**
      * Returns true if both persons have the same identity and data fields.
      * This defines a stronger notion of equality between two persons.
@@ -100,7 +99,6 @@ public class Person {
                 && otherPerson.getPhone().equals(getPhone())
                 && otherPerson.getEmail().equals(getEmail())
                 && otherPerson.getAddress().equals(getAddress())
-                && otherPerson.getRemark().equals(getRemark())
                 && otherPerson.getTags().equals(getTags());
     }
 

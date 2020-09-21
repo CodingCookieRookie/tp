@@ -7,12 +7,10 @@ import static java.util.Objects.requireNonNull;
  * Guarantees: immutable; is always valid
  */
 public class Remark {
-    public static final String MESSAGE_CONSTRAINTS = "Remark should be alphanumeric";
     public final String value;
 
     /**
-     * Creates a remark.
-     * @param remark
+     * @param remark of the person to be updated to
      */
     public Remark(String remark) {
         requireNonNull(remark);
