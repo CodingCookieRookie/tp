@@ -17,7 +17,7 @@ public class AddCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a person to the class. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a student to the class. "
             + "Parameters: "
             + PREFIX_NAME + "NAME "
             + PREFIX_MATRICULATION + "MATRICULATION "
@@ -26,12 +26,12 @@ public class AddCommand extends Command {
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "John Doe "
             + PREFIX_MATRICULATION + "A1234567X "
-            + PREFIX_EMAIL + "johnd@example.com "
+            + PREFIX_EMAIL + "johnd@u.nus.edu "
             + PREFIX_TAG + "absent "
-            + PREFIX_TAG + "dumb";
+            + PREFIX_TAG + "foreigner";
 
-    public static final String MESSAGE_SUCCESS = "New person added: %1$s";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the class";
+    public static final String MESSAGE_SUCCESS = "New student added: %1$s";
+    public static final String MESSAGE_DUPLICATE_PERSON = "This student already exists in the class";
 
     private final Person toAdd;
 

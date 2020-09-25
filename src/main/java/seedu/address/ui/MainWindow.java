@@ -2,6 +2,7 @@ package seedu.address.ui;
 
 import java.util.logging.Logger;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
@@ -23,6 +24,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
  */
 public class MainWindow extends UiPart<Stage> {
 
+    private static final int SLEEP_TIME = 2000;
     private static final String FXML = "MainWindow.fxml";
 
     private final Logger logger = LogsCenter.getLogger(getClass());
@@ -155,12 +157,19 @@ public class MainWindow extends UiPart<Stage> {
      * Closes the application.
      */
     @FXML
-    private void handleExit() {
-        GuiSettings guiSettings = new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),
-                (int) primaryStage.getX(), (int) primaryStage.getY());
-        logic.setGuiSettings(guiSettings);
-        helpWindow.hide();
-        primaryStage.hide();
+    private void handleExit() throws InterruptedException {
+        Platform.runLater(() -> {
+            try {
+                Thread.sleep(SLEEP_TIME);
+                GuiSettings guiSettings = new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),
+                        (int) primaryStage.getX(), (int) primaryStage.getY());
+                logic.setGuiSettings(guiSettings);
+                helpWindow.hide();
+                primaryStage.hide();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     public PersonListPanel getPersonListPanel() {
@@ -172,7 +181,8 @@ public class MainWindow extends UiPart<Stage> {
      *
      * @see seedu.address.logic.Logic#execute(String)
      */
-    private CommandResult executeCommand(String commandText) throws CommandException, ParseException {
+    private CommandResult executeCommand(String commandText) throws
+            CommandException, ParseException, InterruptedException {
         try {
             CommandResult commandResult = logic.execute(commandText);
             logger.info("Result: " + commandResult.getFeedbackToUser());
