@@ -140,6 +140,16 @@ public class MainWindow extends UiPart<Stage> {
                 event.consume();
             }
         });
+
+        getRoot().addEventFilter(KeyEvent.KEY_RELEASED, keyEvent -> {
+            if (keyEvent.getCode() == KeyCode.ENTER) {
+                sessionStudentListPanel = new SessionStudentListPanel(logic.getFilteredAttributesList());
+                sessionStudentListPanelPlaceholder.getChildren().add(sessionStudentListPanel.getRoot());
+                StatusBarFooter statusBarFooter = new StatusBarFooter(
+                    logic.getLeftSessionDetails(), logic.getRightSessionDetails());
+                statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
+            }
+        });
     }
 
     /**

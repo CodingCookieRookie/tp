@@ -192,6 +192,7 @@ public class ModelManager implements Model {
     @Override
     public void resetSessionList() {
         this.sessionList.clearSessions();
+        sessionId = null;
     }
 
     @Override
@@ -218,6 +219,11 @@ public class ModelManager implements Model {
 
     @Override
     public void deleteSession(Session target, Index id) {
+        System.out.println("hi2");
+        if (id.getZeroBased() == sessionId.getZeroBased()) {
+            System.out.println("hi");
+            sessionId = null;
+        }
         sessionList.updateStudentList(studentList.getStudentList());
         sessionList.deleteSession(target);
         refreshStudentStatistics();
