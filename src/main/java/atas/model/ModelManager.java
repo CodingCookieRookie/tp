@@ -219,9 +219,7 @@ public class ModelManager implements Model {
 
     @Override
     public void deleteSession(Session target, Index id) {
-        System.out.println("hi2");
-        if (id.getZeroBased() == sessionId.getZeroBased()) {
-            System.out.println("hi");
+        if (sessionId != null && id.getZeroBased() == sessionId.getZeroBased()) {
             sessionId = null;
         }
         sessionList.updateStudentList(studentList.getStudentList());
